@@ -1,0 +1,186 @@
+:root {
+    --container-bg-color: #333;
+    --left-bg-color: rgba(223, 39, 39, 0.7);
+    --left-button-hover-color: rgba(161, 11, 11, 0.3);
+    --right-bg-color: rgba(13, 67, 182, 0.404);
+    --right-button-hover-color: rgba(10, 36, 92, 0.3);
+    --hover-width: 75%;
+    --other-width: 25%;
+    --speed: 1000ms;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Condensed", sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Global Styling */
+
+h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: #fff;
+    padding: 0;
+    white-space: nowrap;
+    text-transform: capitalize;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/* Button */
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    border: solid 3px #ccc;
+    padding: 1rem 3rem;
+    color: #ccc;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    white-space: nowrap;
+}
+
+/* container */
+
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--container-bg-color);
+  }
+
+/* Seperator */
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* left part */
+
+.split.left {
+    left: 0;
+}
+
+/* right part */
+
+.split.right {
+    right: 0;
+}
+
+/* for displaying the left background image */
+
+.split.left {
+    background-image: url("../images/plane.jpeg");
+    background-size: cover;
+}
+
+/* for displaying the right background image */
+
+.split.right {
+    background-image: url("../images/train.jpeg");
+    background-size: cover;
+}
+
+/* for overlay of color on the left side */
+
+.split.left::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-bg-color);
+}
+
+/* for overlay of color on the right side */
+.split.right::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-bg-color);
+}
+
+.split.left, .split.right, .split.right:before, .split.left:before {
+  transition: var(--speed) all ease-in-out;
+}
+
+.hover-left .left {
+    width: var(--hover-width);
+}
+
+/* when one the part is hovered we want it to be stacked on the top of each other */
+.hover-left .right::before {
+    z-index: 2;
+}
+
+.hover-right .left::before {
+    z-index: 2;
+}
+
+/* when hovering on the left part the right part should be shrinked */
+
+.hover-left .left {
+    width: var(--hover-width);
+}
+
+
+.hover-left .right {
+    width: var(--other-width);
+}
+
+/* when hovering on the right part the left part should be shrinked */
+.hover-right .right {
+    width: var(--hover-width);
+}
+
+.hover-right .left {
+    width: var(--other-width);
+}
+
+/* when we hovered on the buttons */
+
+.split.left .btn:hover {
+    background-color: var(--left-button-hover-color);
+    border-color: var(--left-button-hover-color);
+  }
+  
+  .split.right .btn:hover {
+    background-color: var(--right-button-hover-color);
+    border-color: var(--right-button-hover-color);
+  }
+
+  /* for the screen size below 700 pixels */
+
+  @media(max-width: 700px) {
+      h1 {
+          font-size: 2rem;
+      }
+      .btn {
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+      }
+
+      html, body {
+          height: 100%;
+          width: 100%;
+      }
+
+      .container {
+          transform: rotate(270deg);
+      }
+  }
