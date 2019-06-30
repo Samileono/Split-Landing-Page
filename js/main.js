@@ -1,21 +1,40 @@
-const left = document.querySelector('.left'),
-            right = document.querySelector('.right'),
-            container = document.querySelector('.container');
+// const left = document.querySelector('.left'),
+//             right = document.querySelector('.right'),
+//             container = document.querySelector('.container');
+
+// left.addEventListener("mouseenter", function() {
+//     container.classList.add('hover-left');
+// });
+
+// left.addEventListener("mouseleave", function(){
+//     container.classList.remove('hover-left');
+// });
+
+
+// right.addEventListener("mouseenter", function(){
+//     container.classList.add('hover-right');
+// });
+
+// right.addEventListener("mouseleave", function(){
+//     container.classList.remove('hover-right');
+// });
+
+const container = document.querySelector(".container"),
+      left = document.querySelector(".left"),
+      right = document.querySelector(".right");
 
 left.addEventListener("mouseenter", function(){
-    container.classList.add('hover-left');
+    container.classList.add("hover-left");
 });
 
 left.addEventListener("mouseleave", function(){
-    container.classList.remove('hover-left');
-});
-
+    container.classList.remove("hover-left");
+}); 
 
 right.addEventListener("mouseenter", function(){
-    container.classList.add('hover-right');
+    container.classList.add("hover-right"); 
 });
 
 right.addEventListener("mouseleave", function(){
-    container.classList.remove('hover-right');
+    container.classList.remove("hover-right");
 });
-
